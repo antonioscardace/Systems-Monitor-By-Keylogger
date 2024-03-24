@@ -1,0 +1,93 @@
+.stats {
+    background: var(--main-bg-white);
+    min-height: 100vh;
+    height: auto!important;
+    padding-top: 5vh;
+    padding-bottom: 14vh;
+}
+
+.stats .title {
+    color: var(--main-text-black);
+    font-family: "DM Serif Display", serif;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 7vh;
+}
+
+.stats .container {
+    max-width: 1200px;
+    width: 80%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.stats .container .geoip-chart, .stats .container .avg-bar-chart, .stats .container .wordcloud-chart {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.stats .container .geoip-chart {
+    height: 80vh;
+}
+
+.stats .container .avg-bar-chart {
+    width: 65%;
+}
+
+.stats .container .donut-chart {
+    width: 34.6%;
+    margin-bottom: 30px;
+}
+
+.stats .container .wordcloud-chart, .stats .container .avg-bar-chart, .stats .container .donut-chart {
+    height: 45vh;
+}
+
+.devices {
+    background: var(--main-bg-yellow);
+    min-height: 100vh;
+    height: auto!important;
+    padding-top: 50px;
+    padding-bottom: 5vh;
+}
+
+.devices h1 {
+    font-family: "DM Serif Display", serif;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 5vh;
+}
+
+.devices .container {
+    max-width: 85%;
+    width: 80%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.devices .container .table tbody tr td {
+    font-family: 'Courier New', Courier, monospace;
+    vertical-align: middle;
+}
+
+.devices .container .table thead tr th {
+    font-family: 'Roboto';
+    letter-spacing: 1px;
+}
+
+.devices .container .table .btn-blue {
+    background-color: rgb(208, 244, 222);
+    color: var(--main-text-black);
+}
+
+.devices .container .table .btn-yellow {
+    background-color: rgb(255, 230, 109);
+    color: var(--main-text-black);
+}
+
+.devices .container .table .btn-red {
+    background-color: rgb(212, 77, 92);
+    color: var(--main-bg-white);
+}

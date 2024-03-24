@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="author" content="Antonio Scardace">
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/home.css">
+        
+        <script type="text/javascript">var charts = 4;</script>
+        <script src="js/main.js"></script>
+
+        <link rel="icon" type="image/png" sizes="32x32" href="imgs/logo.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="imgs/logo.png">
+
+        <title>Keylogger | Home</title>
+
+    </head>
+    <body>
+        <div class="loading-page">
+            <div class="loader-block">
+                <div class="loader"> </div>
+            </div>
+            <p>Loading...</p>
+        </div>
+
+        <section class="real-page">
+
+            <section class="stats">
+                <h1 class="title">Keylogger Panel Control</h1>
+                <div class="container">
+                    <iframe class="geoip-chart" onload="finishLoading()" src="https://localhost:8888/d-solo/jzqUXSSSz/keylogger-stats?orgId=1&refresh=5s&theme=dark&panelId=2" frameborder="0"></iframe>
+                    <iframe class="wordcloud-chart" onload="finishLoading()" src="https://localhost:8888/d-solo/jzqUXSSSz/keylogger-stats?orgId=1&refresh=5s&theme=dark&panelId=6" frameborder="0"></iframe>
+                    <iframe class="avg-bar-chart" onload="finishLoading()" src="https://localhost:8888/d-solo/jzqUXSSSz/keylogger-stats?orgId=1&refresh=5s&theme=dark&panelId=9" frameborder="0"></iframe>
+                    <iframe class="donut-chart" onload="finishLoading()" src="https://localhost:8888/d-solo/jzqUXSSSz/keylogger-stats?orgId=1&refresh=5s&theme=dark&panelId=4" frameborder="0"></iframe>
+                </div>
+            </section>
+
+            <section class="devices">
+                <h1>Victim Devices</h1>
+                <div class="container text-center" ng-app="panel" ng-controller="devicesCtrl">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Device Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">IP Address</th>
+                                <th scope="col">Registered On</th>
+                                <th scope="col">Last Access</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="d in devices">
+                                <td>{{ d.device_name }}</td>
+                                <td>{{ d.username }}</td>
+                                <td>{{ d.ip_address }}</td>
+                                <td>{{ d.registered_on }}</td>
+                                <td>{{ d.last_access }}</td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-blue" ng-click='redirect(d.uuid)'><i class="fa-regular fa-eye"></i></button>
+                                        <button type="button" class="btn btn-yellow" ng-click="clean_logs(d.uuid)"><i class="fa-solid fa-broom"></i></button>
+                                        <button type="button" class="btn btn-red" ng-click="delete_device(d.uuid)"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>                   
+                </div>
+            </section>
+
+        </section>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/b074a19227.js" crossorigin="anonymous"></script>
+        <script src="js/home.js"></script>
+    </body>
+</html>

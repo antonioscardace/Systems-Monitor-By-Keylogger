@@ -1,0 +1,113 @@
+.stats {
+    background: var(--main-bg-white);
+    min-height: 100vh;
+    height: auto!important;
+    padding-top: 5vh;
+    padding-bottom: 16vh;
+}
+
+.stats .title {
+    color: var(--main-text-black);
+    font-family: "Sarabun", serif;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 7vh;
+}
+
+.stats .container {
+    width: 78vw;
+    max-width: none!important;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.stats .container * {
+    margin-bottom: 12px;
+}
+
+.stats .container .geoip-chart {
+    height: 42vh;
+    width: 100%;
+}
+
+.stats .container .geoip-table {
+    height: 38vh;
+    width: 66%;
+}
+
+.stats .container .donut-chart-countries {
+    height: 38vh;
+    width: 32.66%;
+    margin-left: 1%;
+}
+
+.stats .container .wordcloud-chart {
+    height: 45vh;
+    width: 100%;
+}
+
+.stats .container .avg-bar-chart {
+    width: 64%;
+    height: 45vh;
+}
+
+.stats .container .donut-chart {
+    width: 34.66%;
+    height: 45vh;
+    margin-left: 1%;
+}
+
+.devices {
+    background: var(--main-bg-yellow);
+    min-height: 100vh;
+    height: auto!important;
+    padding-top: 50px;
+    padding-bottom: 5vh;
+}
+
+.devices h1 {
+    font-family: "Sarabun", serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 6vh;
+}
+
+.devices .container {
+    width: 77vw;
+    max-width: none!important;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.devices .container .table tbody tr td {
+    font-family: 'Roboto';
+    font-weight: 200;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    vertical-align: middle;
+}
+
+.devices .container .table thead tr th {
+    font-family: 'Roboto';
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.devices .container .table .btn-blue {
+    background-color: rgb(73 212 157 / 68%);
+    color: var(--main-text-black);
+}
+
+.devices .container .table .btn-yellow {
+    background-color: rgb(255, 230, 109);
+    color: var(--main-text-black);
+}
+
+.devices .container .table .btn-red {
+    background-color: rgb(212, 77, 92);
+    color: var(--main-bg-white);
+}

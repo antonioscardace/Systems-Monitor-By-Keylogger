@@ -1,0 +1,50 @@
+.container {
+    top: 0;
+    padding-top: 32px;
+    max-width: 100%!important;
+    width: 100%;
+    background: #e45c5cee;
+}
+
+.container .row {
+    margin-bottom: 15px;
+}
+
+.container .row * {
+    font-family: "Roboto";
+    font-size: 15px;
+    color: var(--main-bg-white);
+    text-align: center;
+}
+
+.container .row .col-sm p b {
+    font-size: 19px;
+    letter-spacing: 1px;
+}
+
+.records {
+    background: var(--main-bg-white);
+    padding-bottom: 10vh;
+    width: 800px;
+}
+
+.records #recordlist {
+    margin-top: 120px;
+    margin-left: 40px;
+}
+
+.records #recordlist .record {
+    margin-bottom: 1.5rem;
+}
+
+.records #recordlist .record p {
+    color: var(--main-text-black);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.2rem;
+}
+
+.records #recordlist .record .first, .records #recordlist .record .last {
+    font-weight: 600;
+}

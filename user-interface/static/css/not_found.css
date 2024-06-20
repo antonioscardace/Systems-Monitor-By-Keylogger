@@ -1,0 +1,15 @@
+.core {
+    margin-left: 50%;
+    margin-top: 10vh;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: 'Sedan SC';
+}
+
+.core h1 {
+    font-size: 16rem;
+}
+
+.core h5 {
+    font-size: 1.45rem;
+}

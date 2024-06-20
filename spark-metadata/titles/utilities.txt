@@ -1,0 +1,16 @@
+calculator
+calendar
+notepad
+snipping tool
+command prompt
+notepad
+settings
+control panel
+clock
+search
+photos
+dropbox
+icloud
+google drive
+google calendar
+terminal

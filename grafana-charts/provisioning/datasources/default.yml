@@ -1,0 +1,14 @@
+apiVersion: 1
+
+datasources:
+  - name: Records-Metadata
+    type: elasticsearch
+    url: http://elasticsearch:9200/
+    access: proxy
+    jsonData:
+      indexName: 'keylogger_stats'
+      timeField: '@timestamp'
+      esVersion: '7.10.0'
+      maxConcurrentShardRequests: 10
+      tlsSkipVerify: true
+      timeout: 200

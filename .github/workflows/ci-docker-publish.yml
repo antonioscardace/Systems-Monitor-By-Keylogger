@@ -10,6 +10,8 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     strategy:
       matrix:
         image:
@@ -25,6 +27,11 @@ jobs:
           - name: User Interface
             context: ./user-interface/
             tag: antonioscardace/user-interface:latest
+
+    #---------------------------------#
+    #   Build and Push Docker Image   #
+    #   on the DockerHub Registry     #
+    #---------------------------------#
 
     steps:
       - name: Checkout repository

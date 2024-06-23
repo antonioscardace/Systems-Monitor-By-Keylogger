@@ -3,7 +3,7 @@ run-name: Docker Publish
 
 on:
   workflow_run:
-    workflows: ["test"]
+    workflows: ["tests"]
     types:
       - completed
 

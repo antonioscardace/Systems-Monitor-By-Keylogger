@@ -1,4 +1,4 @@
-name: test
+name: tests
 run-name: CI for Testing
 
 on:

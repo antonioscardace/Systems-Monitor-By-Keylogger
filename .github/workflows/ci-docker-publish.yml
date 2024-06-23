@@ -1,8 +1,9 @@
-name: Docker Publish
+name: docker-publish
+run-name: Docker Publish
 
 on:
   workflow_run:
-    workflows: ["CI for Testing"]
+    workflows: ["test"]
     types:
       - completed
 

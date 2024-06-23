@@ -57,10 +57,10 @@ jobs:
           python-version: '3.9'
 
       - name: Install Python dependencies
-        run: pip install -r spark-metadata/requirements.txt
+        run: cd spark-metadata/ && pip install -r requirements.txt
 
       - name: Change the PythonPath
         run: echo "PYTHONPATH=$PYTHONPATH:$GITHUB_WORKSPACE/spark-metadata/src" >> $GITHUB_ENV
 
       - name: Run Python Tests
-        run: pytest spark-metadata/tests/
+        run: cd spark-metadata/ && pytest tests/

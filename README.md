@@ -1,14 +1,9 @@
 # Systems-Monitor-By-Keylogger
-_Project for "Technologies for Advanced Programming" course_<br/>
-_Grade: 30 with honors / 30_<br/>
-_[Antonio Scardace](https://linktr.ee/antonioscardace)_ @ _Dept of Math and Computer Science, University of Catania_
 
 [![CodeFactor](https://www.codefactor.io/repository/github/antonioscardace/systems-monitor-by-keylogger/badge/main)](https://www.codefactor.io/repository/github/antonioscardace/systems-monitor-by-keylogger/overview/main)
 [![License](https://img.shields.io/github/license/antonioscardace/systems-monitor-by-keylogger.svg)](https://github.com/antonioscardace/systems-monitor-by-keylogger/blob/master/LICENSE)
 [![Open Issues](https://img.shields.io/github/issues/antonioscardace/systems-monitor-by-keylogger.svg)](https://github.com/antonioscardace/systems-monitor-by-keylogger/issues)
 [![CI for Testing](https://github.com/antonioscardace/systems-monitor-by-keylogger/actions/workflows/ci-test.yml/badge.svg)](https://github.com/antonioscardace/systems-monitor-by-keylogger/actions/workflows/ci-test.yml)
-
-## Introduction
 
 The project is the server system of a distributed keylogger. It aims to make real-time stats about systems where the keylogger is installed.
 This keylogger may be a virus installed illegally or a service of the product legally accepted by the user. It is not relevant to this project.
@@ -52,7 +47,6 @@ I also had the opportunity to practice the following skills:
 <img src="docs/snaps/stats-0.png"/>
 <img src="docs/snaps/stats-1.png"/>
 <img src="docs/snaps/devices.png"/>
-<img src="docs/snaps/pc-logs.png"/>
 
 ## Getting Started
 

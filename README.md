@@ -10,8 +10,8 @@ This keylogger may be a virus installed illegally or a service of the product le
 
 The following functions are provided:
 - Show the List of Active Devices :page_facing_up:
-- Show Logs by the UUID of the Device :page_facing_up:
-- Show Device Info by its UUID :page_facing_up:
+- Show Logs of each Device :page_facing_up:
+- Show Info of each Device :page_facing_up:
 - Stats (charts):
    + Victim devices geolocation by IP (multiple charts) :earth_americas:
    + Used apps classification (by basic heuristics) :bar_chart:
@@ -29,7 +29,7 @@ This project was created as an exam project to test a set of skills, including:
 
 I also had the opportunity to practice the following skills:
 * Knowledge of Java and Spring Boot
-* Knowledge of the GitHub Actions
+* Knowledge of the GitHub Actions for CI/CD
 * Use of the Static Analysis Tools (CodeFactor, Snyk Code, and SonarQube)
 
 ## System Infrastructure

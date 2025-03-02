@@ -1,0 +1,6 @@
+google chrome
+mozilla firefox
+microsoft edge
+internet explorer
+opera
+safari

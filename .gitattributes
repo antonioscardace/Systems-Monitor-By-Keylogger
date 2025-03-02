@@ -1,0 +1,16 @@
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.xml text eol=lf
+
+*.png binary
+*.jpg binary
+*.pdf binary
+
+*.py text eol=lf
+*.java text eol=lf
+*.sh text eol=lf
+
+*.json diff=json
+*.yml diff=yaml
+*.xml diff=xml

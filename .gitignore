@@ -1,0 +1,14 @@
+.DS_Store
+
+**/target/
+**/release.properties
+*.class
+*.jar
+*.war
+
+**/__pycache__/
+**/.pytest_cache/
+
+.env
+.vscode/
+examples/

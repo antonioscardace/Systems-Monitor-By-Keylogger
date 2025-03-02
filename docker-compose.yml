@@ -1,0 +1,187 @@
+services:
+
+  #-----------------------------#
+  #      Kafka - Zookeeper      #
+  #-----------------------------#
+
+  kafka-zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.10.arm64
+    container_name: kafka-zookeeper
+    restart: on-failure
+    expose:
+      - 2181
+    environment:
+      - ZOOKEEPER_CLIENT_PORT=2181
+      - ZOOKEEPER_TICK_TIME=2000
+
+  #--------------------------#
+  #      Kafka - Broker      #
+  #--------------------------#
+
+  kafka-broker:
+    image: confluentinc/cp-kafka:7.0.10.arm64
+    container_name: kafka-broker
+    restart: on-failure
+    expose:
+      - 9092
+    depends_on:
+      - kafka-zookeeper
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=kafka-zookeeper:2181
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka-broker:9093
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+
+  #--------------------#
+  #     Kafka - UI     #
+  #--------------------#
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    container_name: kafka-ui
+    restart: on-failure
+    ports:
+      - 8080:8080
+    depends_on:
+      - kafka-broker
+    environment:
+      KAFKA_CLUSTERS_0_NAME: keylogger-monitor
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka-broker:9093
+      KAFKA_CLUSTERS_0_ZOOKEEPER: kafka-zookeeper:2181
+
+  #-----------------#
+  #      MySQL      #
+  #-----------------#
+
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: on-failure
+    expose:
+      - 3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - $PWD/data-manager/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    environment:
+      - MYSQL_DATABASE=keylogger_data
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PSW}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PSW}
+
+  #-------------------------------------#
+  #      Spring Boot - Data Manager     #
+  #-------------------------------------#
+
+  data-manager:
+    build: $PWD/data-manager/
+    container_name: data-manager
+    restart: on-failure
+    expose:
+      - 6000
+    depends_on:
+      - kafka-broker
+      - mysql-db
+    environment:
+      - AES_KEY=${AES_KEY}
+      - KAFKA_URL=kafka-broker:9093
+      - KAFKA_TOPIC=metadata
+      - MYSQL_URL=jdbc:mysql://mysql-db:3306/keylogger_data
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PSW=${MYSQL_PSW}
+
+  #-----------------------------------#
+  #     Spring Boot - API Gateway     #
+  #-----------------------------------#
+
+  api-gateway:
+    build: $PWD/api-gateway/
+    container_name: api-gateway
+    restart: on-failure
+    ports:
+      - 8888:8888
+    depends_on:
+      - data-manager
+
+  #-------------------------#
+  #      Elasticsearch      #
+  #-------------------------#
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0-arm64
+    container_name: elasticsearch
+    restart: on-failure
+    expose:
+      - 9200
+    volumes:
+      - es001-data:/usr/share/elasticsearch/data/
+    environment:
+      - node.name=es001
+      - discovery.type=single-node
+      - cluster.name=elasticsearch-cluster
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m -Dlog4j2.disableJmx=true -XX:-UseContainerSupport"
+
+  #------------------------------#
+  #      PySpark - Metadata      #
+  #------------------------------#
+
+  spark-metadata:
+    build: $PWD/spark-metadata/
+    container_name: spark-metadata
+    restart: on-failure
+    depends_on:
+      - kafka-zookeeper
+      - kafka-broker
+      - elasticsearch
+    environment:
+      - KAFKA_URL=kafka-broker:9093
+      - KAFKA_TOPIC=metadata
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_INDEX=keylogger_stats
+
+  #----------------------------#
+  #      Grafana - Charts      #
+  #----------------------------#
+
+  grafana-charts:
+    image: grafana/grafana:8.2.6
+    container_name: grafana-charts
+    restart: on-failure
+    user: "0:0"
+    ports:
+      - 3000:3000
+    depends_on:
+      - elasticsearch
+    environment:
+      - GRAFANA_USER=${GRAFANA_USER}
+      - GRAFANA_PASSWORD=${GRAFANA_PSW}
+      - GF_INSTALL_PLUGINS=magnesium-wordcloud-panel,grafana-worldmap-panel
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - $PWD/grafana-charts/certs:/etc/grafana/certs
+      - $PWD/grafana-charts/provisioning:/etc/grafana/provisioning
+      - $PWD/grafana-charts/grafana.ini:/etc/grafana/grafana.ini
+      - $PWD/grafana-charts/dashboard.json:/var/lib/grafana/dashboards/dashboard.json
+
+  #----------------------------------#
+  #      Nginx - User Interface      #
+  #----------------------------------#
+
+  user-interface:
+    build: $PWD/user-interface/
+    container_name: user-interface
+    restart: on-failure
+    ports:
+      - 8000:8000
+    depends_on:
+      - api-gateway
+      - grafana-charts
+
+volumes:
+  mysql-data:
+  es001-data:
+  grafana-data:

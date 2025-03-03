@@ -44,7 +44,8 @@ I also had the opportunity to practice the following skills:
 
 ## GUI Demo
 
-https://github.com/user-attachments/assets/adb9ac74-757d-45a7-bf08-5c55bd7166c3
+![Home 1](docs/snaps/stats-0.png)
+![Home 2](/docs/snaps/devices.png)
 
 ## Getting Started
 

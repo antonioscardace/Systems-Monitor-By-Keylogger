@@ -1,9 +1,9 @@
 # Distributed Keylogger Monitoring System
 
-[![CodeFactor](https://www.codefactor.io/repository/github/antonioscardace/distributed-keylogger-monitoring-system/badge/main)](https://www.codefactor.io/repository/github/antonioscardace/distributed-keylogger-monitoring-system/overview/main)
-[![License](https://img.shields.io/github/license/antonioscardace/distributed-keylogger-monitoring-system.svg)](https://github.com/antonioscardace/distributed-keylogger-monitoring-system/blob/master/LICENSE)
-[![Open Issues](https://img.shields.io/github/issues/antonioscardace/distributed-keylogger-monitoring-system.svg)](https://github.com/antonioscardace/distributed-keylogger-monitoring-system/issues)
-[![CI for Testing](https://github.com/antonioscardace/distributed-keylogger-monitoring-system/actions/workflows/ci-test.yml/badge.svg)](https://github.com/antonioscardace/distributed-keylogger-monitoring-system/actions/workflows/ci-test.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/antonioscardace/keylogger-monitoring-system/badge/main)](https://www.codefactor.io/repository/github/antonioscardace/keylogger-monitoring-system/overview/main)
+[![License](https://img.shields.io/github/license/antonioscardace/keylogger-monitoring-system.svg)](https://github.com/antonioscardace/keylogger-monitoring-system/blob/master/LICENSE)
+[![Open Issues](https://img.shields.io/github/issues/antonioscardace/keylogger-monitoring-system.svg)](https://github.com/antonioscardace/keylogger-monitoring-system/issues)
+[![CI for Testing](https://github.com/antonioscardace/keylogger-monitoring-system/actions/workflows/ci-test.yml/badge.svg)](https://github.com/antonioscardace/keylogger-monitoring-system/actions/workflows/ci-test.yml)
 
 The project is the server system of a distributed keylogger. It aims to make real-time stats about systems where the keylogger is installed.
 This keylogger may be a virus installed illegally or a service of the product legally accepted by the user. It is not relevant to this project.
@@ -58,8 +58,8 @@ So that the repository is successfully cloned and the project runs, there are a 
 Then, dependencies can be installed and the project can be run. 
 
 ```sh
-   $ git clone https://github.com/antonioscardace/Distributed-Keylogger-Monitoring-System.git
-   $ cd Distributed-Keylogger-Monitoring-System/
+   $ git clone https://github.com/antonioscardace/Keylogger-Monitoring-System.git
+   $ cd Keylogger-Monitoring-System/
    $ bash run.sh
 ```
 
